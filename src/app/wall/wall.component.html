@@ -1,7 +1,7 @@
 <div class="pubPosts" *ngFor="let post of publishedPosts">
     <mat-card class="post"> 
         <mat-divider></mat-divider>
-        <mat-label class="author" (click)="goToUserProfile(post.authorID)"> {{post.author}} </mat-label>
+        <mat-label class="author" (click)="goToUserProfile(post.authorID)"> {{post.author.name}} </mat-label>
         <br>
         <img class="image" [src]= "post.image">
         <br>
