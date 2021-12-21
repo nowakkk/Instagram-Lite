@@ -6,13 +6,18 @@ import { UserComponent } from './user/user.component';
 @Injectable({
   providedIn: 'root'
 })
-export class PostServiceService {
+export class PostService {
 
   postsList: PostComponent[] = [];
   loggedUser: UserComponent;
   
   constructor(private userService: UserService) {
     this.loggedUser = userService.loggedUser;
+
+    this.postsList = [
+      {id: 0, author: userService.usersList[0], authorID: 0, description: "lalala", likes: 0, image: '/assets/images/1zdj.jpg', comments: [], showComments: false},
+      {id: 1, author: userService.usersList[1], authorID: 1, description: "lalala martin", likes: 0, image: '/assets/images/7zdj.jpg', comments: [], showComments: false}
+    ];
    }
   
   public getCommentsQuantity(postId: number){

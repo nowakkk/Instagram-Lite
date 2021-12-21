@@ -1,1 +1,35 @@
-<p>wall works!</p>
+<div class="pubPosts" *ngFor="let post of publishedPosts">
+    <mat-card class="post"> 
+        <mat-divider></mat-divider>
+        <mat-label class="author" (click)="goToUserProfile(post.authorID)"> {{post.author}} </mat-label>
+        <br>
+        <img class="image" [src]= "post.image">
+        <br>
+        <mat-icon class="clickHeart" (click)="addLike(post.id)">favorite</mat-icon>
+        {{post.likes}}
+        <br>
+        Title : {{post.description}}
+        <br>
+        Comments : {{post.comments.length}} <i class="hide-showComments" (click)="showComments(post.id)"> {{description}} comments</i>
+        <br>
+        <mat-list *ngIf="post.showComments" role="list">
+            <mat-list-item *ngFor="let comment of post.comments" role="listitem"> {{comment}} </mat-list-item>
+        </mat-list>
+        <br>
+        <p>
+            <mat-form-field appearance="outline">
+      
+                <mat-icon (click)="addEmotikon()" matSuffix>sentiment_very_satisfied</mat-icon>
+           
+              <mat-label>Add comment</mat-label>
+              
+              <input [(ngModel)]="tempComment" matInput placeholder="Add coment">
+            </mat-form-field>
+            <button (click)="addComment(post.id)" mat-stroked-button color="primary">Post</button>
+        </p>
+        <br>
+        ID : {{post.id}}
+        <mat-divider></mat-divider>
+    </mat-card>
+    
+</div>

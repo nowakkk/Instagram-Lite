@@ -1,1 +1,26 @@
-<p>toolbar works!</p>
+<mat-toolbar class="toolbar">
+    <div class="instaLogo" (click)="goToMainPage()">
+        Instagram Lite
+        {{loggedUser.name}}
+    </div>
+    <div class="toolbar-icons">
+        <mat-icon class="clickableIcon">home</mat-icon>
+        <div class="spacer"></div>
+        <mat-icon class="clickableIcon" (click)="goToConversations()">message</mat-icon>
+        <div class="spacer"></div>
+        <mat-icon class="clickableIcon" >add_box</mat-icon>
+        <div class="spacer"></div>
+        <mat-icon class="clickableIcon">info</mat-icon>
+        <div class="spacer"></div>
+        <mat-icon class="clickableIcon" >
+            person
+        </mat-icon>
+        <mat-icon class="clickableIcon" mat-button [matMenuTriggerFor]="menu">keyboard_arrow_down</mat-icon>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let user of usersList"> {{user.name}} </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="logOut()">Log Out <mat-icon>remove_circle</mat-icon></button>
+        </mat-menu>
+        
+    </div>
+</mat-toolbar>
