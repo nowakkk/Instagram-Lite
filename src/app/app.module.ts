@@ -30,6 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ConversationComponent } from './conversation/conversation.component';
 import { LoggingViewComponent } from './logging-view/logging-view.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AddingPostComponent } from './adding-post/adding-post.component';
 
 
 
@@ -46,6 +47,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     RegisterComponent,
     UserProfileComponent,
     ConversationComponent,
+    AddingPostComponent,
   ],
   imports: [
     BrowserModule,

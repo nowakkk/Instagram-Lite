@@ -1,0 +1,24 @@
+<p class="title">Create new post </p>
+<mat-divider></mat-divider>
+<p>Add new photo </p>
+
+<div mat-dialog-content class="creatingWindow">
+
+
+<ul style="display: flex; scroll-snap-type: x mandatory;">
+    <li class="images" *ngFor="let image of imageInfo; let i=index">
+        <img class ="imageOptions" src="/assets/images/{{i+1}}zdj.jpg" (click)="photoInfo(i+1)">
+        <div class="spacer"></div>
+    </li>
+</ul>
+
+</div>
+<div class="opis"> 
+<p>Add description: </p>
+<br>
+<mat-form-field appearance="fill">
+    <mat-label>description</mat-label>
+    <input matInput [(ngModel)]="description">
+  </mat-form-field>
+  <button mat-raised-button class="guzik" (click)="addNewPost()">Add post</button>
+</div>

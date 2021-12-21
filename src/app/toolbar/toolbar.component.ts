@@ -4,6 +4,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserComponentInterface, UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { UserComponent } from '../user/user.component';
+import { AddingPostComponent } from '../adding-post/adding-post.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -33,9 +34,9 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['/conversations']);
   }
 
-  // addNewPost(){
-  //   this.dialog.open(AddPostComponent);
-  // }
+  addNewPost(){
+    this.dialog.open(AddingPostComponent);
+  }
 
   goToProfile(userID: number){
     this.userService.goToUserProfile();

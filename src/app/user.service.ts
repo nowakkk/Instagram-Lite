@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { UserComponent } from './user/user.component';
+import { PostComponent } from './post/post.component';
+import { PostService } from './post.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ export class UserService {
   observedUser!: UserComponent;
   observedUserChange: Subject<UserComponent> = new Subject<UserComponent>();
 
-  usersList: UserComponent[] = [
-    {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "zdj", profileUrl: "link", usersPosts: [], 
+  public usersList: UserComponent[] = [
+    {id: 0, login: "123", password: "123", name: "Krzysztof Nowak22", photo: "zdj", profileUrl: "link", usersPosts: [], 
       userFollowers: [], userFollowing: []
     },
     {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "zdj", profileUrl: "link", usersPosts: [],
@@ -23,22 +25,27 @@ export class UserService {
   ];
 
   constructor(private router: Router) {
-    this.observedUser = this.usersList[0];
-    this.loggedUser = this.usersList[0];
 
     this.usersList = [
       {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "zdj", profileUrl: "link", usersPosts: [
-        {id: 1, author: this.usersList[0], authorID: 0, description: "ja nad morzem", likes: 0, image: '/assets/images/1zdj.jpg', comments: [], showComments: false}], 
+        new PostComponent("ja nad morzem", '/assets/images/1zdj.jpg', this.usersList[0], 1)
+      ], 
         userFollowers: [], userFollowing: []
       },
       {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "zdj", profileUrl: "link", usersPosts: [
-        {id: 2, author: this.usersList[1], authorID: 1, description: "martina post", likes: 0, image: '/assets/images/4zdj.jpg', comments: [], showComments: false}],
-        userFollowers: [], userFollowing: []},
-    ];
+        new PostComponent("martin to niemiec", '/assets/images/4zdj.jpg', this.usersList[1], 2)
+    ],
+      userFollowers: [], userFollowing: []
+    }]    
+    
+    this.observedUser = this.usersList[0];
+    this.loggedUser = this.usersList[1];
   }
 
-  public addUsersPost(){
-    console.log("dodawanie postu do listy postód usera: " + this.loggedUser);
+  public addPostToUsersPosts(){
+    let index = this.usersList.indexOf(this.loggedUser);
+    console.log("chuje muje rozjebalem: " + index);
+
   }
 
   public observeNewUser(userID: number){
@@ -54,14 +61,6 @@ export class UserService {
     this.loggedUser = newLoggedUser;
     this.loggedUserChange.next(this.loggedUser)
 
-  }
-
-  public getAuthor(){
-    return this.loggedUser;
-  }
-
-  public getAuthorID(){
-    return this.loggedUser.id;
   }
 
   public goToUserProfile(){

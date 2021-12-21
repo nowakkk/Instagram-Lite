@@ -1,1 +1,37 @@
-<p>user-profile works!</p>
+<app-toolbar></app-toolbar>
+
+<div class="userData">
+    <img class="image" src= "assets/images/face1.png">
+    <div class="UserProfileData">
+        <div class="userProfileBasicData">
+            <p>Here we have name of the profile and basic/essential functionalities of an app such as an option to follow or send a direct message to the user</p>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="UserProfileHardData">
+            <p>{{observedUser.name}}</p>
+            <span class="spacer"></span>
+            <p>user ID: </p>
+            <span class="spacer"></span>
+            <p>{{observedUser.id}}</p>
+            <span class="spacer"></span>
+            <!-- <p>Posts:</p>
+            <span class="spacer"></span>
+            <p>Followers: </p>
+            <span class="spacer"></span>
+            <p>Likes: </p>
+            <span class="spacer"></span> -->
+        </div>
+        <mat-divider></mat-divider>
+        <div class="userProfileDescription">
+            <p>Here we have a profile description which is 100% modifiable by user, so probably [(ngModel)] is going to be applied</p>
+        </div>
+    </div>
+</div>
+
+<div class="usersPosts">Posts of that user
+    <mat-grid-list cols="3" rowHeight="1:1" [gutterSize]="'25px'">
+        <mat-grid-tile *ngFor="let post of observedUser.usersPosts" (click)="gettingUserTest(observedUser.id)">
+            <img src = {{post.image}}>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

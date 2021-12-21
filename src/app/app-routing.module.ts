@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'conversations', component: ConversationComponent},
   { path: 'register-view', component: RegisterComponent },  
 
-  { path: '', redirectTo: 'logging-view', pathMatch: 'full' }, // redirect to `first-component`
+  { path: '', redirectTo: 'logged-view', pathMatch: 'full' }, // redirect to `first-component`
 
 
 ];

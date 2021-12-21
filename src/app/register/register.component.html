@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div class="parentDiv">    
+    <div class="registerWindow">
+        <h1 class="napis">Welcome on my platform ! </h1>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Username</mat-label>
+            <textarea #newUserUsername matInput placeholder="Enter how you would like to be seen for other users"></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Login</mat-label>
+            <textarea #newUserLogin matInput placeholder="single word form required ! "></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <textarea #newUserPassword matInput placeholder="*************"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" class="registerButton" (click)="addNewUser(newUserUsername.value, newUserLogin.value, newUserPassword.value)">Take me in ! <mat-icon>arrow_forward_ios</mat-icon>    </button>
+        <button mat-raised-button color="accent" class="goBackButton" (click)="backToLogin()"><mat-icon>arrow_back_ios</mat-icon>Back </button>
+
+    </div>
+</div>

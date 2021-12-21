@@ -7,6 +7,7 @@ import { PostComponent } from '../post/post.component';
   styleUrls: ['./user.component.sass']
 })
 export class UserComponent {
+  [x: string]: any;
 
   id!: number;
   login!: string;

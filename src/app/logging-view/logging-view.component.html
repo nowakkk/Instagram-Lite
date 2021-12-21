@@ -1,1 +1,18 @@
-<p>logging-view works!</p>
+<div class="parentDiv">  
+    <div class="logingWindow">
+        <h1 class="napis">Login </h1>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>login</mat-label>
+            <textarea #newUserUsername matInput placeholder="Enter your login" [(ngModel)]="login"></textarea>
+        </mat-form-field>
+        <h1 class="napis">Password </h1>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <textarea #newUserLogin matInput placeholder="Enter your password" [(ngModel)]="password"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="loggingIn()" class="loginButton">Log in</button>
+        <button mat-raised-button color="primary" (click)="goToRegister()" class="registerButton">Sign Up</button>
+
+    </div>
+</div>  
