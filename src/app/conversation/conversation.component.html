@@ -1,1 +1,28 @@
-<p>conversation works!</p>
+<app-toolbar></app-toolbar>
+<div class="spacer"></div>
+<div class="conversationsWindow">
+    <div class="convWindow" *ngIf="userHasConversations" >
+        <div class="usersConversations">
+            <div class="usernameField">currently logged user</div>
+            <div class="userConversationField" *ngFor="let conv of usersList"> {{conv.name}} </div>
+
+        </div>
+        <div class="activeConversation">
+            <div class="conversationCorrespondent">
+                name of user you write with
+            </div>
+            <p>here the opened conversation</p>
+            <div class="existingConversation">
+
+            </div>
+            <mat-divider></mat-divider>
+            <br>
+
+            <div class="newMessage">
+                <textarea id="field" placeholder="Type Here" class="message"></textarea>
+                <mat-icon class="sendIcon">send</mat-icon>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-conversation',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConversationComponent implements OnInit {
 
-  constructor() { }
+  userHasConversations: boolean = true;
+  usersList: UserComponent[];
+
+  constructor(private userService: UserService) {
+    this.usersList = userService.usersList;
+   }
 
   ngOnInit(): void {
   }
