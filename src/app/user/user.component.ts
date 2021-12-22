@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { Message } from '../conversation/conversation.component';
 import { PostComponent } from '../post/post.component';
 
 @Component({
@@ -7,7 +8,6 @@ import { PostComponent } from '../post/post.component';
   styleUrls: ['./user.component.sass']
 })
 export class UserComponent {
-  [x: string]: any;
 
   id!: number;
   login!: string;
@@ -18,6 +18,7 @@ export class UserComponent {
   usersPosts: PostComponent[];
   userFollowers: UserComponent[];     //list with users who follows this user
   userFollowing: UserComponent[];     //list with users followed by this user himself/herself
+  usersMessages: Message[]; 
 
   constructor(
   @Inject(Number)newID: number, 
@@ -34,7 +35,9 @@ export class UserComponent {
     this.usersPosts = [];
     this.userFollowers = [];
     this.userFollowing = [];
+    this.usersMessages = [];
    }
 
 }
+
 

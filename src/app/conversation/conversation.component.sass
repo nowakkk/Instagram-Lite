@@ -25,6 +25,7 @@
     border: solid
     border-color: #2653C2
     width: 35%
+    
 
 .activeConversation
     width: 65%
@@ -38,6 +39,9 @@
     border-style: dotted
     border-color: #292727
     
+.viewSpacer
+    width: 100%
+    height: 20px
 
 .usernameField
     height: 8%
@@ -45,16 +49,20 @@
     border: solid
     border-color: #C7A30E
     text-align: center
+    overflow: hidden
     
 .userConversationField
     height: 10%
-    display: flex
-    justify-content: center
+    text-align: center
+    vertical-align: middle
     border-style: dotted
     border-color: #292727
+    overflow: hidden
+    cursor: pointer
 
 .existingConversation
     height: 70%
+    overflow-y: scroll
 
 .newMessage
     position: relative
@@ -72,6 +80,9 @@
     margin-right: 3%
     margin-top: 10px
     vertical-align: middle
+
+.singleMessage
+    overflow-wrap: break-word
 
 .sendIcon
     margin-top: 30px
