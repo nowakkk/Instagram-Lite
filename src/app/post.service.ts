@@ -13,17 +13,8 @@ export class PostService {
   
   constructor(private userService: UserService) {
     this.loggedUser = userService.loggedUser;
-
-    // this.postsList = [
-    //   {id: 0, author: userService.usersList[0], authorID: 0, description: "lalala", likes: 0, usersLiked: [], image: '/assets/images/1zdj.jpg', comments: [], showComments: false},
-    //   {id: 1, author: userService.usersList[1], authorID: 1, description: "lalala martin", likes: 0, usersLiked: [], image: '/assets/images/7zdj.jpg', comments: [], showComments: false}
-    // ];
     this.createPostsList();
    }
-  
-  public getCommentsQuantity(postId: number){
-
-  }
 
   public showComments(postID: number){
     for (let post of this.postsList){

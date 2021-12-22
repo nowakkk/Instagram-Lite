@@ -20,7 +20,6 @@ export class AddingPostComponent implements OnInit {
   nextId!: number;
   userIndex: number = 0;
 
-
   imageInfo = [
     {id: 0, isSelected: false},
     {id: 1, isSelected: false},
@@ -45,7 +44,6 @@ export class AddingPostComponent implements OnInit {
     let index = this.userService.usersList.indexOf(this.newPostAuthor);
     console.log("post add to user : " + index);
     this.userService.usersList[index].usersPosts.unshift(new PostComponent(this.description, this.image, this.newPostAuthor, this.nextId));
-
   }
 
   public photoInfo(nr: number){
@@ -54,5 +52,4 @@ export class AddingPostComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

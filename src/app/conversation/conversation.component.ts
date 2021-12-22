@@ -48,15 +48,6 @@ export class ConversationComponent implements OnInit {
     }
   }
 
-  public getMessageStyle(){
-    let messageStyle = {
-      'border-color': '#686EC8',
-      'margin-left': 'auto',
-      'float': 'right'
-      };
-    return messageStyle;
-  }
-
   public updateMessages(){
     this.thisConversationMessages = []
     for (let message of this.loggedUserMessages){
@@ -79,7 +70,7 @@ export class ConversationComponent implements OnInit {
     let textingWithUserIndex = this.userService.usersList.indexOf(this.textingWith);
     let messageSendTime = new Date();
     console.log(this.newMessage);
-    console.log("message send to : " + this.textingWith.name);
+    console.log("message sent to : " + this.textingWith.name);
     console.log("message sent at : " + messageSendTime);
     if (this.newMessage != ""){
       this.userService.usersList[loggedUserIndex].usersMessages.push({author: this.userService.loggedUser, receiver: this.textingWith, sendTime: messageSendTime, content: this.newMessage});
