@@ -21,8 +21,8 @@
             </div>
             
             <div class="existingConversation">
-                <div *ngFor="let message of thisConversationMessages" class="singleMessage">
-                    {{message.content}}
+                <div *ngFor="let message of thisConversationMessages" [ngClass]="message.author == loggedUser ? 'singleMessageFromAuthor' : 'singleMessage' " >
+                    {{message.author.name}} : {{message.content}}
                     <br>
                 </div>
                 <!-- <div class="stylingConvSpacer"></div> -->

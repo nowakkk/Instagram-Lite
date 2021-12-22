@@ -16,6 +16,8 @@ export interface Message {
 })
 export class ConversationComponent implements OnInit {
 
+  testBoolean: boolean = false;
+
   userHasConversations: boolean = true;
   usersList: UserComponent[];
   usersListToMessage: UserComponent[] = [];
@@ -46,6 +48,15 @@ export class ConversationComponent implements OnInit {
     }
   }
 
+  public getMessageStyle(){
+    let messageStyle = {
+      'border-color': '#686EC8',
+      'margin-left': 'auto',
+      'float': 'right'
+      };
+    return messageStyle;
+  }
+
   public updateMessages(){
     this.thisConversationMessages = []
     for (let message of this.loggedUserMessages){
@@ -70,10 +81,13 @@ export class ConversationComponent implements OnInit {
     console.log(this.newMessage);
     console.log("message send to : " + this.textingWith.name);
     console.log("message sent at : " + messageSendTime);
-    this.userService.usersList[loggedUserIndex].usersMessages.push({author: this.userService.loggedUser, receiver: this.textingWith, sendTime: messageSendTime, content: this.newMessage});
-    this.userService.usersList[textingWithUserIndex].usersMessages.push({author: this.userService.loggedUser, receiver: this.textingWith, sendTime: messageSendTime, content: this.newMessage});
+    if (this.newMessage != ""){
+      this.userService.usersList[loggedUserIndex].usersMessages.push({author: this.userService.loggedUser, receiver: this.textingWith, sendTime: messageSendTime, content: this.newMessage});
+      this.userService.usersList[textingWithUserIndex].usersMessages.push({author: this.userService.loggedUser, receiver: this.textingWith, sendTime: messageSendTime, content: this.newMessage});
+    }
     this.newMessage = "";
     this.updateMessages();
+    this.testBoolean = !this.testBoolean;
   }
 
   ngOnInit(): void {
