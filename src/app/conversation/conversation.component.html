@@ -5,9 +5,9 @@
         <div class="usersConversations">
             <div class="usernameField">
                 <div class="viewSpacer"></div>
-                currently logged user
+               {{ loggedUser.name }}
             </div>
-            <div class="userConversationField" *ngFor="let conv of usersList" (click)="setNewTextingWithUser(conv)"> 
+            <div class="userConversationField" *ngFor="let conv of usersListToMessage" (click)="setNewTextingWithUser(conv)"> 
                 <div class="viewSpacer"></div>
                 {{conv.name}} 
             </div>
@@ -21,9 +21,11 @@
             </div>
             
             <div class="existingConversation">
-                <p *ngFor="let message of thisConversationMessages" class="singleMessage">
+                <div *ngFor="let message of thisConversationMessages" class="singleMessage">
                     {{message.content}}
-                </p>
+                    <br>
+                </div>
+                <!-- <div class="stylingConvSpacer"></div> -->
             </div>
             <mat-divider></mat-divider>
             <br>

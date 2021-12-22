@@ -63,6 +63,10 @@
 .existingConversation
     height: 70%
     overflow-y: scroll
+    overflow-wrap: break-word
+    display: flex
+    flex-direction: column
+    // justify-content: flex-end
 
 .newMessage
     position: relative
@@ -82,7 +86,21 @@
     vertical-align: middle
 
 .singleMessage
+    border-style: solid
+    border-color: #4BEA27
+    width: fit-content
+    max-width: 95%
+    font-size: 20px
     overflow-wrap: break-word
+    // margin-left: auto
+    float: left
+    display: table-column
+    padding: 5px
+    border-radius: 15px
+
+
+// .stylingConvSpacer
+//     width: 100%
 
 .sendIcon
     margin-top: 30px
