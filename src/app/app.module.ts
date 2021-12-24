@@ -35,6 +35,7 @@ import { AddingPostComponent } from './adding-post/adding-post.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,7 @@ import { AddingPostComponent } from './adding-post/adding-post.component';
     MatButtonModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

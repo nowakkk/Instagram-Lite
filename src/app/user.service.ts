@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
+import { PostService } from './post.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class UserService {
   observedUserChange: Subject<UserComponent> = new Subject<UserComponent>();
 
   public usersList: UserComponent[] = [
-    {id: 0, login: "123", password: "123", name: "Christopher Nowak", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
+    {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "assets/images/face1.png", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
     },
-    {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
+    {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "assets/images/face1.png", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
     },
     {id: 2, login: "12345", password: "123", name: "Sofia Esposito", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
     },
@@ -33,18 +34,18 @@ export class UserService {
   constructor(private router: Router) {
 
     this.usersList = [
-      {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "zdj", profileUrl: "link", usersPosts: [
+      {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "assets/images/face1.png", profileUrl: "link", usersPosts: [
         new PostComponent("Big lonely tree", '/assets/images/1zdj.jpg', this.usersList[0], 1)
       ], userFollowers: [], userFollowing: [], usersMessages: [
           {author: this.usersList[0], receiver: this.usersList[1], sendTime: new Date(), content: "test message from Chris"}]
       },
-      {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "zdj", profileUrl: "link", usersPosts: [
+      {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "assets/images/MartinSchulz.jpg", profileUrl: "link", usersPosts: [
         new PostComponent("Wide and broad desert", '/assets/images/4zdj.jpg', this.usersList[1], 2)], userFollowers: [], userFollowing: [], usersMessages: []
       },
-      {id: 2, login: "12345", password: "123", name: "Sofia Esposito", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
-      {id: 3, login: "123456", password: "123", name: "Oliver Smith", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
-      {id: 4, login: "1234567", password: "123", name: "Ava Miller", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
-      {id: 5, login: "12345678", password: "123", name: "Olga Petrova", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []}
+      {id: 2, login: "12345", password: "123", name: "Sofia Esposito", photo: "assets/images/SofiaEsposito.jpg", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
+      {id: 3, login: "123456", password: "123", name: "Oliver Smith", photo: "assets/images/OliverSmith.jpg", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
+      {id: 4, login: "1234567", password: "123", name: "Ava Miller", photo: "assets/images/AvaMiler.jpg", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
+      {id: 5, login: "12345678", password: "123", name: "Olga Petrova", photo: "assets/images/OlgaPetrova.jpg", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []}
     
     ];    
     
@@ -66,6 +67,12 @@ export class UserService {
     }
     this.observedUserChange.next(this.observedUser);
   }
+
+  // public alignPostDisplay(){
+  //   for (let post of this.postService.postsList){
+  //     post.showComments = false;
+  //   }
+  // }
 
   public changeUser(newLoggedUser: UserComponent){
     this.loggedUser = newLoggedUser;

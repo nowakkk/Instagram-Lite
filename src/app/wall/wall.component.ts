@@ -3,6 +3,7 @@ import { PostService } from '../post.service';
 import { PostComponent } from '../post/post.component';
 import { UserService } from '../user.service';
 import { UserComponent } from '../user/user.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-wall',
@@ -12,23 +13,36 @@ import { UserComponent } from '../user/user.component';
 export class WallComponent implements OnInit {
 
   publishedPosts: PostComponent[] = [];
-  tempComment!: string;
+  tempComment: string = "";
   description: string = "Show";
 
   observedUser: UserComponent;
 
-  constructor(private postService: PostService, private userService: UserService) {
+  constructor(private postService: PostService, private userService: UserService, private snackBar: MatSnackBar) {
     this.publishedPosts = postService.postsList;
     this.observedUser = userService.observedUser;
+
+    this.alignPostsDisplay();
    }
 
   public addLike(postID: number){
     this.postService.addLike(postID);
   }
 
+  public alignPostsDisplay(){
+    for (let post of this.postService.postsList){
+      post.showComments = false;
+    }
+  }
+
   public addComment(postID: number){
-    this.postService.addComment(postID, this.tempComment);
-    this.tempComment = "";
+    if (this.tempComment != ""){
+      this.postService.addComment(postID, this.tempComment);
+      this.tempComment = "";
+    }
+    else {
+      this.snackBar.open("The comment can't be empty!", "OK");
+    }
   }
 
   public showComments(postID: number){

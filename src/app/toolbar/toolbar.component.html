@@ -1,10 +1,9 @@
 <mat-toolbar class="toolbar">
     <div class="instaLogo" (click)="goToMainPage()">
         Instagram Lite
-        {{loggedUser.name}}
     </div>
     <div class="toolbar-icons">
-        <mat-icon class="clickableIcon">home</mat-icon>
+        <mat-icon class="clickableIcon" (click)="goToMainPage()">home</mat-icon>
         <div class="spacer"></div>
         <mat-icon class="clickableIcon" (click)="goToConversations()">message</mat-icon>
         <div class="spacer"></div>

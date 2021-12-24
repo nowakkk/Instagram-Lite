@@ -37,7 +37,7 @@ export class PostService {
   public addComment(postID: number, comment: string){
     for (let post of this.postsList){
       if (post.id == postID){
-        post.comments.push({author: this.loggedUser, commentContent: comment});
+        post.comments.push({author: this.userService.loggedUser, commentContent: comment});
       }
     }
   }

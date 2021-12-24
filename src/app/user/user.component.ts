@@ -30,7 +30,7 @@ export class UserComponent {
     this.login = newLogin;
     this.password = newPassword;
     this.name = newUsername;
-    this.photo = "zdj";
+    this.photo = "assets/images/face1.png";
     this.profileUrl = "link";
     this.usersPosts = [];
     this.userFollowers = [];

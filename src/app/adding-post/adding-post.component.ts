@@ -3,6 +3,7 @@ import { PostService } from '../post.service';
 import { PostComponent } from '../post/post.component';
 import { UserService } from '../user.service';
 import { UserComponent } from '../user/user.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-adding-post',
@@ -31,19 +32,23 @@ export class AddingPostComponent implements OnInit {
     {id: 7, isSelected: false},
   ];
 
-  constructor(private userService: UserService, private postService: PostService) {
+  constructor(private userService: UserService, private postService: PostService, private snackBar: MatSnackBar) {
     this.newPostAuthor = userService.loggedUser;
    }
 
   public addNewPost(){
-    
-    this.image = '/assets/images/'+this.selected+'zdj.jpg';
-    this.nextId = this.postService.postsList.length + 1;
-    this.postService.postsList.unshift(new PostComponent(this.description, this.image, this.newPostAuthor, this.nextId));
+    if (this.selected !== undefined){
+      this.image = '/assets/images/'+this.selected+'zdj.jpg';
+      this.nextId = this.postService.postsList.length + 1;
+      this.postService.postsList.unshift(new PostComponent(this.description, this.image, this.newPostAuthor, this.nextId));
 
-    let index = this.userService.usersList.indexOf(this.newPostAuthor);
-    console.log("post add to user : " + index);
-    this.userService.usersList[index].usersPosts.unshift(new PostComponent(this.description, this.image, this.newPostAuthor, this.nextId));
+      let index = this.userService.usersList.indexOf(this.newPostAuthor);
+      console.log("post add to user : " + index);
+      this.userService.usersList[index].usersPosts.unshift(new PostComponent(this.description, this.image, this.newPostAuthor, this.nextId));
+    }
+    else {
+      this.snackBar.open("You can't publish the post without choosing any image !", "OK");
+    }
   }
 
   public photoInfo(nr: number){

@@ -1,7 +1,7 @@
 <app-toolbar></app-toolbar>
 
 <div class="userData">
-    <img class="image" src= "assets/images/face1.png">
+    <img class="image" src = {{observedUser.photo}}>
     <div class="UserProfileData">
         <div class="userProfileBasicData">
             <p>Here we have name of the profile and basic/essential functionalities of an app such as an option to follow or send a direct message to the user</p>
@@ -31,7 +31,7 @@
 <div class="usersPosts">Posts of that user
     <mat-grid-list cols="3" rowHeight="1:1" [gutterSize]="'25px'">
         <mat-grid-tile *ngFor="let post of observedUser.usersPosts" (click)="gettingUserTest(observedUser.id)">
-            <img src = {{post.image}}>
+            <img class="postOnProfile" src = {{post.image}}>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
