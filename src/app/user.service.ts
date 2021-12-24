@@ -17,9 +17,9 @@ export class UserService {
   observedUserChange: Subject<UserComponent> = new Subject<UserComponent>();
 
   public usersList: UserComponent[] = [
-    {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "assets/images/face1.png", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
+    {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "assets/images/KrzysztofNowak.png", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
     },
-    {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "assets/images/face1.png", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
+    {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "assets/images/MartinSchulz.png", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
     },
     {id: 2, login: "12345", password: "123", name: "Sofia Esposito", photo: "zdj", profileUrl: "link", usersPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
     },
@@ -34,7 +34,7 @@ export class UserService {
   constructor(private router: Router) {
 
     this.usersList = [
-      {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "assets/images/face1.png", profileUrl: "link", usersPosts: [
+      {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "assets/images/KrzysztofNowak.png", profileUrl: "link", usersPosts: [
         new PostComponent("Big lonely tree", '/assets/images/1zdj.jpg', this.usersList[0], 1)
       ], userFollowers: [], userFollowing: [], usersMessages: [
           {author: this.usersList[0], receiver: this.usersList[1], sendTime: new Date(), content: "test message from Chris"}]
