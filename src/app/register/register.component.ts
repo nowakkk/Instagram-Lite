@@ -13,9 +13,6 @@ export class RegisterComponent implements OnInit {
 
   usersList: UserComponentInterface[];
 
-  newUsername!: string;
-  newUserLogin!: string;
-  newUserPassword!: string;
   tempID!: number;
 
   constructor(private userService: UserService, private _snackBar: MatSnackBar, private router: Router) {
