@@ -3,6 +3,8 @@ import { UserComponentInterface, UserService } from '../user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserComponent } from '../user/user.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-register',
@@ -18,8 +20,19 @@ export class RegisterComponent implements OnInit {
   newUserPassword!: string;
   tempID!: number;
 
-  constructor(private userService: UserService, private _snackBar: MatSnackBar, private router: Router) {
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+  constructor(private userService: UserService, private _snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder) {
     this.usersList = userService.usersList;
+
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: ['', Validators.required],
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required],
+    });
    }
 
   ngOnInit(): void {

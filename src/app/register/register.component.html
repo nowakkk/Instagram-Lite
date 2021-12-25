@@ -1,21 +1,54 @@
-<div class="parentDiv">    
-    <div class="registerWindow">
-        <h1 class="fieldDescription">Welcome on my platform ! </h1>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Username</mat-label>
-            <textarea #newUserUsername matInput placeholder="Enter how you would like to be seen for other users"></textarea>
+<mat-stepper [linear]="true" #stepper class="wholeRegister">
+    <mat-step>
+      <form class="dataBlock">
+        <ng-template matStepLabel>Fill out your data</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>username</mat-label>
+          <input matInput placeholder="This is how other users will seen you as" [(ngModel)]="newUsername">
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Login</mat-label>
-            <textarea #newUserLogin matInput placeholder="single word form required ! "></textarea>
+        <mat-form-field appearance="fill">
+          <mat-label>login</mat-label>
+          <input matInput placeholder="Last name, First name" >
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Password</mat-label>
-            <textarea #newUserPassword matInput placeholder="*************"></textarea>
+        <mat-form-field appearance="fill">
+          <mat-label>password</mat-label>
+          <input matInput placeholder="Last name, First name" >
         </mat-form-field>
+        <div>
+          <button class="loginButton" mat-button color="warn" (click)="backToLogin()">Log In</button>          
+          <button class="nextButton" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form class="dataBlock2">
+          <mat-form-field appearance="fill" >
+            <mat-label>Tell something about you</mat-label>
+            <textarea matInput class="descriptionField"></textarea>
+          </mat-form-field>
+          <div class="drop-zone">
+            <div class="timer-bar">
+             <div class="wrapper">
+              <i class='success-icon ion-ios-checkmark-empty'></i>
+              <p class='success-text'></p>
+             </div>
+            </div>
+            <p class="timer-info">Drop your file here</p>
+           </div>
 
-        <button mat-raised-button color="accent" class="registerButton" (click)="addNewUser(newUserUsername.value, newUserLogin.value, newUserPassword.value)">Take me in ! <mat-icon>arrow_forward_ios</mat-icon>    </button>
-        <button mat-raised-button color="accent" class="goBackButton" (click)="backToLogin()"><mat-icon>arrow_back_ios</mat-icon>Back </button>
+      </form>        
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="nextButton">Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button class="nextButton" mat-raised-button color="accent">Take me in! </button>      
+      </div>
+    </mat-step>
 
-    </div>
-</div>
+</mat-stepper>
