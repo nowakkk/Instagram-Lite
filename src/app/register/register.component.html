@@ -27,11 +27,12 @@
             <textarea matInput class="descriptionField" #newUserDescription></textarea>
           </mat-form-field>
           <div class="drop-zone">            
-            <p class="timer-info">Drop your file here</p>
-            <div class="timer-bar">
-              <input type="file" (change)="onFileSelected($event)" #newUserPhoto>
+            <input type="file" name="inpFile" id="inpFile" #newUserPhoto class="input">
+            <div class="image-preview" id="imagePreview">
+              <img src="" alt="Image Preview" class="image-preview__image">
+              <span class="image-preview__default-text">Image Preview</span>
             </div>
-           </div>
+          </div>
 
       </form>        
       <div>

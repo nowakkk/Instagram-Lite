@@ -6,6 +6,7 @@ import { UserComponent } from '../user/user.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -25,6 +26,11 @@ export class RegisterComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  file!: File;
+
+  inpFile = document.getElementById("inpFile");
+  previewContainer = document.getElementById("imagePreview");
+
 
   constructor(private userService: UserService, private _snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder) {
     this.usersList = userService.usersList;
@@ -40,10 +46,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onFileSelected(event: any){
-    console.log(event);
-    this.selectedPhoto = event.target.files[0];
+  onFileSelected(file: File){
   }
+    
 
   addNewUser(userName: string, userLogin: string, userPassword: string, userDescription: string){
     let isOkay = true;
@@ -63,6 +68,8 @@ export class RegisterComponent implements OnInit {
     if (isOkay == true){
       this._snackBar.open("You have been added as a platform user ! Your name is : " + userName, "OK");
       this.tempID = this.userService.usersList.length;
+      const fr = new FileReader();
+
       this.userService.usersList.unshift(new UserComponent(this.tempID, userLogin, userPassword, userName, this.selectedPhoto, userDescription));
       this.userService.loggedUser = this.userService.usersList[0];
       this.router.navigate(['/logged-view']);
