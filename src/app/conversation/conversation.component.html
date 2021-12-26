@@ -1,3 +1,4 @@
+<div class="wholeWindow">
 <app-toolbar></app-toolbar>
 <div class="spacer"></div>
 <div class="conversationsWindow">
@@ -8,16 +9,15 @@
                {{ loggedUser.name }}
             </div>
             <div class="userConversationField" *ngFor="let conv of usersListToMessage" (click)="setNewTextingWithUser(conv)"> 
-                <div class="viewSpacer"></div>
-                {{conv.name}} 
+                <img class="conversationImage" [src] = "conv.photo">
+                <p>{{conv.name}}</p> 
             </div>
 
         </div>
         <div class="activeConversation">
             <div class="conversationCorrespondent" >
-                name of user you write with
-                <br>
-                {{textingWith.name}}
+                <img class="textingWithImage" [src] = "textingWith.photo">
+                <p class="whoWeTextWith"> {{textingWith.name}} </p>
             </div>
             
             <div class="existingConversation">
@@ -37,4 +37,5 @@
 
         </div>
     </div>
+</div>
 </div>
