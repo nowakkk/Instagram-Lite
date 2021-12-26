@@ -4,18 +4,18 @@
         <ng-template matStepLabel>Fill out your data</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>username</mat-label>
-          <input matInput placeholder="This is how other users will seen you as" [(ngModel)]="newUsername">
+          <input matInput placeholder="This is how other users will seen you as" #newUserUsername>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>login</mat-label>
-          <input matInput placeholder="Last name, First name" >
+          <input matInput placeholder="Login cannot contain white characters and must be unique !" #newUserLogin>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>password</mat-label>
-          <input matInput placeholder="Last name, First name" >
+          <input matInput placeholder="***********" #newUserPassword>
         </mat-form-field>
         <div>
-          <button class="loginButton" mat-button color="warn" (click)="backToLogin()">Log In</button>          
+          <button class="loginButton" mat-raised-button color="warn" (click)="backToLogin()">Log In</button>          
           <button class="nextButton" mat-button matStepperNext>Next</button>
         </div>
       </form>
@@ -24,16 +24,13 @@
       <form class="dataBlock2">
           <mat-form-field appearance="fill" >
             <mat-label>Tell something about you</mat-label>
-            <textarea matInput class="descriptionField"></textarea>
+            <textarea matInput class="descriptionField" #newUserDescription></textarea>
           </mat-form-field>
-          <div class="drop-zone">
-            <div class="timer-bar">
-             <div class="wrapper">
-              <i class='success-icon ion-ios-checkmark-empty'></i>
-              <p class='success-text'></p>
-             </div>
-            </div>
+          <div class="drop-zone">            
             <p class="timer-info">Drop your file here</p>
+            <div class="timer-bar">
+              <input type="file" (change)="onFileSelected($event)" #newUserPhoto>
+            </div>
            </div>
 
       </form>        
@@ -47,7 +44,7 @@
       <p>You are now done.</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button class="nextButton" mat-raised-button color="accent">Take me in! </button>      
+        <button class="nextButton" mat-raised-button color="accent" (click)="addNewUser(newUserUsername.value, newUserLogin.value, newUserPassword.value, newUserDescription.value)">Take me in! </button>      
       </div>
     </mat-step>
 

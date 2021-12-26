@@ -27,9 +27,17 @@ export class PostService {
 
   public addLike(postID: number){
     for (let post of this.postsList){
-      if (post.id == postID){
+      if ((post.id == postID) && (this.userService.loggedUser.usersLikedPosts.indexOf(post) === -1)){
+        this.userService.loggedUser.usersLikedPosts.unshift(post);
         post.likes = post.likes + 1;
         console.log("Add like");
+        break;
+      }
+      else if ((post.id == postID) && (this.userService.loggedUser.usersLikedPosts.indexOf(post) !== -1)){
+        let postIndex = this.userService.loggedUser.usersLikedPosts.indexOf(post);
+        this.userService.loggedUser.usersLikedPosts.splice(postIndex, 1);
+        post.likes -= 1;
+        console.log("now you dont like this post anymore");
       }
     }
   }

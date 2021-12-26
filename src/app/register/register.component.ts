@@ -13,6 +13,8 @@ import { MatInput } from '@angular/material/input';
 })
 export class RegisterComponent implements OnInit {
 
+  selectedPhoto!: File;
+
   usersList: UserComponentInterface[];
 
   newUsername!: string;
@@ -38,7 +40,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addNewUser(userName: string, userLogin: string, userPassword: string, ){
+  onFileSelected(event: any){
+    console.log(event);
+    this.selectedPhoto = event.target.files[0];
+  }
+
+  addNewUser(userName: string, userLogin: string, userPassword: string, userDescription: string){
     let isOkay = true;
     for (let user of this.usersList){
       if (user.login == userLogin){
@@ -56,7 +63,7 @@ export class RegisterComponent implements OnInit {
     if (isOkay == true){
       this._snackBar.open("You have been added as a platform user ! Your name is : " + userName, "OK");
       this.tempID = this.userService.usersList.length;
-      this.userService.usersList.unshift(new UserComponent(this.tempID, userLogin, userPassword, userName));
+      this.userService.usersList.unshift(new UserComponent(this.tempID, userLogin, userPassword, userName, this.selectedPhoto, userDescription));
       this.userService.loggedUser = this.userService.usersList[0];
       this.router.navigate(['/logged-view']);
     }

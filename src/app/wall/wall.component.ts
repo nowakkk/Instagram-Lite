@@ -15,6 +15,7 @@ export class WallComponent implements OnInit {
   publishedPosts: PostComponent[] = [];
   tempComment: string = "";
   description: string = "Show";
+  displayedIcon: string = "favorite";
 
   observedUser: UserComponent;
 
@@ -25,8 +26,16 @@ export class WallComponent implements OnInit {
     this.alignPostsDisplay();
    }
 
-  public addLike(postID: number){
-    this.postService.addLike(postID);
+  public addLike(post: PostComponent){
+    this.postService.addLike(post.id);
+  }
+
+  public isPostLikedByLoggedUser(checkPost: PostComponent){
+    if (this.userService.loggedUser.usersLikedPosts.indexOf(checkPost) !== -1){
+      return "favorite";
+    }
+    else
+      return "favorite_border";
   }
 
   public alignPostsDisplay(){
