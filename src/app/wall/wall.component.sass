@@ -3,24 +3,50 @@
     overflow: hidden
     display: flex
     vertical-align: center
+    background: #F7F8F8  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8)  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ACBB78, #F7F8F8) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 .class
     border-style: double
 
 .post
     width: 100%
-    margin: auto
     vertical-align: center
     border: solid
     border-width: 0.1em
+    padding: 0px
+    padding-bottom: 20px
 
 .postAuthor
     cursor: pointer
+    padding-left: 20px
+    padding-top: 10px
+    padding-bottom: 10px
+
+.author
+    font-size: 20px
+    text-align: center
+    height: 20px
+
+.underPostStuff
+    padding: 20px
+    padding-top: 5px
+
+.underPostIcons
+    display: flex
+    flex-direction: row
+
+.iconsSpacer
+    width: 20px
+
 
 .postAuthorPhoto
     max-height: 20px
     max-width: auto
     border-radius: 10px
+    vertical-align: middle
 
 .addCommentButton
     height: 40px

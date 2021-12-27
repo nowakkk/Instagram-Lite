@@ -22,7 +22,7 @@
             
             <div class="existingConversation">
                 <div *ngFor="let message of thisConversationMessages" [ngClass]="message.author == loggedUser ? 'singleMessageFromAuthor' : 'singleMessage' " >
-                    {{message.author.name}} : {{message.content}}
+                    {{message.content}}
                     <br>
                 </div>
                 <!-- <div class="stylingConvSpacer"></div> -->
@@ -31,10 +31,9 @@
             <br>
 
             <div class="newMessage">
-                <textarea id="field" placeholder="Type Here" class="message" [(ngModel)]="newMessage"></textarea>
+                <textarea id="field" placeholder="Type Here" class="message" [(ngModel)]="newMessage" (keyup)="sendMessage2($event)"></textarea>
                 <mat-icon class="sendIcon" (click)="sendMessage()">send</mat-icon>
             </div>
-
         </div>
     </div>
 </div>

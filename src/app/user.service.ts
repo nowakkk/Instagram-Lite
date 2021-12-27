@@ -12,6 +12,7 @@ export class UserService {
 
   loggedUser: UserComponent;
   loggedUserChange: Subject<UserComponent> = new Subject<UserComponent>();
+  textingWith: UserComponent;
 
   observedUser!: UserComponent;
   observedUserChange: Subject<UserComponent> = new Subject<UserComponent>();
@@ -32,6 +33,7 @@ export class UserService {
   ];
 
   constructor(private router: Router) {
+    
 
     this.usersList = [
       {id: 0, login: "123", password: "123", name: "Krzysztof Nowak", photo: "assets/images/KrzysztofNowak.png", profileDescription: "Krzychu z polski", profileUrl: "link", usersPosts: [
@@ -47,8 +49,9 @@ export class UserService {
       {id: 4, login: "1234567", password: "123", name: "Ava Miller", photo: "assets/images/AvaMiler.jpg", profileDescription: "Krzychu z polski", profileUrl: "link", usersPosts: [], usersLikedPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
       {id: 5, login: "12345678", password: "123", name: "Olga Petrova", photo: "assets/images/OlgaPetrova.jpg", profileDescription: "Krzychu z polski", profileUrl: "link", usersPosts: [], usersLikedPosts: [], userFollowers: [], userFollowing: [], usersMessages: []}
     
-    ];    
-    
+    ];  
+      
+    this.textingWith = this.usersList[3];
     this.observedUser = this.usersList[1];
     this.loggedUser = this.usersList[0];
   }

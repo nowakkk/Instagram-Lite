@@ -7,7 +7,7 @@
 
 <ul style="display: flex; scroll-snap-type: x mandatory;">
     <li class="images" *ngFor="let image of imageInfo; let i=index">
-        <img class ="imageOptions" src="/assets/images/{{i+1}}zdj.jpg" (click)="photoInfo(i+1)">
+        <img [ngClass] = "image.id === selected - 1 ? 'selectedImage' : 'nonSelectedImage'" src="/assets/images/{{i+1}}zdj.jpg" (click)="photoInfo(i+1)">
         <div class="spacer"></div>
     </li>
 </ul>
