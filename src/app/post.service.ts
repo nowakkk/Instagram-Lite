@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { PostComponent } from './post/post.component';
 import { UserService } from './user.service';
 import { UserComponent } from './user/user.component';
@@ -10,11 +11,18 @@ export class PostService {
 
   postsList: PostComponent[] = [];
   loggedUser: UserComponent;
+  observedPost!: PostComponent;
+  observedPostChange: Subject<PostComponent> = new Subject<PostComponent>();
   
   constructor(private userService: UserService) {
     this.loggedUser = userService.loggedUser;
     this.createPostsList();
-   }
+  }
+
+  public changeObservedPost(newPost: PostComponent){
+    this.observedPost = newPost;
+    this.observedPostChange.next(this.observedPost);
+  }
 
   public showComments(postID: number){
     for (let post of this.postsList){

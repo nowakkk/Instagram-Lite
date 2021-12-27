@@ -42,7 +42,8 @@ export class UserService {
           {author: this.usersList[0], receiver: this.usersList[1], sendTime: new Date(), content: "test message from Chris"}]
       },
       {id: 1, login: "1234", password: "123", name: "Martin Schulz", photo: "assets/images/MartinSchulz.jpg", profileDescription: "Krzychu z polski", profileUrl: "link", usersPosts: [
-        new PostComponent("Wide and broad desert", '/assets/images/4zdj.jpg', this.usersList[1], 2)], usersLikedPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
+        new PostComponent("Wide and broad desertsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+         '/assets/images/4zdj.jpg', this.usersList[1], 2)], usersLikedPosts: [], userFollowers: [], userFollowing: [], usersMessages: []
       },
       {id: 2, login: "12345", password: "123", name: "Sofia Esposito", photo: "assets/images/SofiaEsposito.jpg", profileDescription: "Krzychu z polski", profileUrl: "link", usersPosts: [], usersLikedPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
       {id: 3, login: "123456", password: "123", name: "Oliver Smith", photo: "assets/images/OliverSmith.jpg", profileDescription: "Krzychu z polski", profileUrl: "link", usersPosts: [], usersLikedPosts: [], userFollowers: [], userFollowing: [], usersMessages: []},
@@ -83,7 +84,14 @@ export class UserService {
   }
 
   public goToUserProfile(){
-    this.router.navigate(['/test-user-profile']);
+    if (this.router.url === '/test-user-profile'){
+      this.router.navigateByUrl('/logged-view', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/test-user-profile']);
+    })
+    }
+    else {
+      this.router.navigate(['/test-user-profile']);
+    }
   }
 
   public getUserByID(userID: number): void{

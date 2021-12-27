@@ -24,7 +24,7 @@
 
 <div class="usersPosts">Posts of that user
     <mat-grid-list cols="3" rowHeight="1:1" [gutterSize]="'25px'">
-        <mat-grid-tile *ngFor="let post of observedUser.usersPosts" (click)="gettingUserTest(observedUser.id)">
+        <mat-grid-tile *ngFor="let post of observedUser.usersPosts" (click)="previewPost(post)">
             <img class="postOnProfile" src = {{post.image}}>
         </mat-grid-tile>
     </mat-grid-list>

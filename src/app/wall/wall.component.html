@@ -12,16 +12,17 @@
                 <div class="iconsSpacer"></div>
                 <mat-icon class="clickHeart" (click)="messagePostAuthor(post)"> chat_bubble_outline</mat-icon>
             </div>
+            <br>
             Likes : {{post.likes}}
             <br>
-            Title : {{post.description}}
-            <br>
+            <div class="postDescription"> Title : {{post.description}} </div>
+
             Comments : {{post.comments.length}} <i class="hide-showComments" (click)="showComments(post.id)"> {{description}} comments</i>
             <br>
             <mat-divider></mat-divider>
             <br>
             <div *ngIf="post.showComments">
-                <p class="comment" *ngFor="let comment of post.comments" (click)="goToUserProfile(comment.author.id)"> {{comment.author.name}} : {{comment.commentContent}} </p>
+                <p class="comment" *ngFor="let comment of post.comments" (click)="goToUserProfile(comment.author.id)"> <b>{{comment.author.name}} :</b> {{comment.commentContent}} </p>
             </div>
             <div class="addCommentFields">
                 <mat-form-field appearance="outline">
@@ -35,5 +36,6 @@
                 <button (click)="addComment(post.id)" mat-stroked-button color="primary" class="addCommentButton">Add</button>
             </div>
         </div>
-    </mat-card>    
+    </mat-card> 
+    <div class="postSpacer"></div>   
 </div>
