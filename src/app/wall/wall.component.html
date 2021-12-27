@@ -22,7 +22,10 @@
             <mat-divider></mat-divider>
             <br>
             <div *ngIf="post.showComments">
-                <p class="comment" *ngFor="let comment of post.comments" (click)="goToUserProfile(comment.author.id)"> <b>{{comment.author.name}} :</b> {{comment.commentContent}} </p>
+                <p class="comment" *ngFor="let comment of post.comments" >
+                     <b style="cursor: pointer" (click)="goToUserProfile(comment.author.id)">{{comment.author.name}} :</b> 
+                    {{comment.commentContent}} 
+                </p>
             </div>
             <div class="addCommentFields">
                 <mat-form-field appearance="outline">

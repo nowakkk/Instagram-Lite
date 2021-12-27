@@ -4,8 +4,11 @@
     </div>
     <div class="sideSection">
         <div class="authorsPart">
-            <p class="postAuthorName"> {{observedPost.author.name}} </p>
-            <mat-divider></mat-divider>
+            <div class="authorsDataField">
+                <img class="authorsPhoto" [src]="observedPost.author.photo">
+                <p class="postAuthorName"> {{observedPost.author.name}} </p>
+                <mat-divider></mat-divider>
+            </div>
             <p class="postDescription"> {{observedPost.description}} </p>
             <mat-divider></mat-divider>
             <br>
