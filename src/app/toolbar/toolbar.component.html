@@ -11,15 +11,6 @@
         <div class="spacer"></div>
         <mat-icon class="clickableIcon">info</mat-icon>
         <div class="spacer"></div>
-        <mat-icon class="clickableIcon" >
-            person
-        </mat-icon>
-        <mat-icon class="clickableIcon" mat-button [matMenuTriggerFor]="menu">keyboard_arrow_down</mat-icon>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item *ngFor="let user of usersList"> {{user.name}} </button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="logOut()">Log Out <mat-icon>remove_circle</mat-icon></button>
-        </mat-menu>
-        
+        <mat-icon class="clickableIcon" (click)="logOut()">block</mat-icon>
     </div>
 </mat-toolbar>
