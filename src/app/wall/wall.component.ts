@@ -65,6 +65,12 @@ export class WallComponent implements OnInit {
     }
   }
 
+  public addComment2(event: any, postID: number){
+    if (event.keyCode === 13){
+      this.addComment(postID);
+    }
+  }
+
   public showComments(postID: number){
     this.postService.showComments(postID);
     if (this.description == "Show")this.description = "Hide";

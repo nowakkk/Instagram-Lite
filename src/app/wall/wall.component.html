@@ -30,7 +30,7 @@
                 
                     <mat-label>Add comment</mat-label>
                     
-                    <input [(ngModel)]="tempComment" matInput placeholder="Add coment">
+                    <input [(ngModel)]="tempComment" matInput placeholder="Add coment" (keyup)="addComment2($event, post.id)">
                 </mat-form-field>
                 <button (click)="addComment(post.id)" mat-stroked-button color="primary" class="addCommentButton">Add</button>
             </div>
