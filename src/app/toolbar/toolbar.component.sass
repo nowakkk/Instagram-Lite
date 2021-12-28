@@ -1,6 +1,8 @@
 .toolbar
     background-color: gray
     position: sticky
+    display: flex
+    flex-direction: row
     top: 0px
     margin: 0
     z-index: 1000
@@ -9,8 +11,10 @@
     
 .toolbar-icons
     display: flex
-    position: absolute
-    right: 15%
+    flex-direction: row
+    float: right
+    margin-left: auto
+    padding-right: 10%
 
 .spacer
     width: 40px
@@ -26,6 +30,6 @@
 
 .instaLogo
     cursor: pointer
-    padding-left: 150px
+    padding-left: 15%
     font-size: 40px
     font-family: 'Brush Script MT'
