@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'Instagram Lite';
 
   constructor(router: Router){
-    router.navigate(['/register-view']);
+    router.navigate(['/logging-view']);
   }
 }
