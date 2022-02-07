@@ -14,23 +14,17 @@
             <span class="spacer"></span>
             <p>{{observedUser.id}}</p>
             <span class="spacer"></span>
-            <!-- <p>Posts:</p>
-            <span class="spacer"></span>
-            <p>Followers: </p>
-            <span class="spacer"></span>
-            <p>Likes: </p>
-            <span class="spacer"></span> -->
         </div>
         <mat-divider></mat-divider>
         <div class="userProfileDescription">
-            <p>Here we have a profile description which is 100% modifiable by user, so probably [(ngModel)] is going to be applied</p>
+            <p> {{observedUser.profileDescription}}</p>
         </div>
     </div>
 </div>
 
 <div class="usersPosts">Posts of that user
     <mat-grid-list cols="3" rowHeight="1:1" [gutterSize]="'25px'">
-        <mat-grid-tile *ngFor="let post of observedUser.usersPosts" (click)="gettingUserTest(observedUser.id)">
+        <mat-grid-tile *ngFor="let post of observedUser.usersPosts" (click)="previewPost(post)">
             <img class="postOnProfile" src = {{post.image}}>
         </mat-grid-tile>
     </mat-grid-list>

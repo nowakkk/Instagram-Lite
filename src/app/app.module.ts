@@ -31,7 +31,8 @@ import { ConversationComponent } from './conversation/conversation.component';
 import { LoggingViewComponent } from './logging-view/logging-view.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AddingPostComponent } from './adding-post/adding-post.component';
-
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+import { PostPreviewComponent } from './post-preview/post-preview.component';
 
 
 
@@ -49,6 +50,7 @@ import { AddingPostComponent } from './adding-post/adding-post.component';
     UserProfileComponent,
     ConversationComponent,
     AddingPostComponent,
+    PostPreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ import { AddingPostComponent } from './adding-post/adding-post.component';
     MatSnackBarModule,
     MatMenuModule,
     MatGridListModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

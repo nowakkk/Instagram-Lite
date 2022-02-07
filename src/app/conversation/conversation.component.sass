@@ -9,13 +9,29 @@
     width: 1000px
     margin: auto
     vertical-align: middle
-    border-style: solid
-    border-width: 0.1em
-    border-color: #292727
+    border-radius: 20px
+    border-collapse: collapse
+    border: 10px solid transparent
+    background: #000000
 
 .spacer
     height: 5vh
 
+.conversationImage
+    height: 100%
+    width: 80px
+    float: left
+    border-radius: 36px
+
+.whoWeTextWith
+    margin-left: 140px
+    margin-top: 20px
+    font-size: 40px
+    max-height: 100%
+
+.textingWithImage
+    height: 100%
+    width: 100px
 
 .convWindow
     display: flex
@@ -27,24 +43,31 @@
 
 .usersConversations
     border: solid
-    border-width: 0.1em
-    border-color: #292727
     width: 35%
+    background: #f85032  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #e73827, #f85032)  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #e73827, #f85032) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     
 
 .activeConversation
     width: 65%
     border: solid
-    border-width: 0.1em
-    border-color: #292727
-    display: flex
     flex-direction: column
+    background: #E8CBC0  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #636FA4, #e8cbc0)  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #636FA4, #E8CBC0) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 .conversationCorrespondent
+    display: flex
+    flex-direction: row
     height: 10%
+    overflow: hidden
     border-style: solid
     border-width: 0.1em
     border-color: #292727
+    background-color: #f85032
     
 .viewSpacer
     width: 100%
@@ -106,25 +129,34 @@
     float: right
     display: table-column
     padding: 5px
+    margin-right: 4px
+    margin-top: 4px
     border-radius: 15px
 
 .singleMessageFromAuthor
     border-style: solid
     border-width: 0.1em
-    border-color: #4BEA27
+    border-color: #27c3ea
     width: fit-content
     max-width: 95%
     font-size: 20px
     overflow-wrap: break-word
-    // margin-left: auto
-    // float: right
     display: table-column
     padding: 5px
+    margin-top: 4px
+    margin-left: 4px
     border-radius: 15px
 
 
 .sendIcon
-    margin-top: 30px
+    margin-top: 15px
     margin-right: 50px
     cursor: pointer
-    vertical-align: middle
+
+
+.wholeWindow
+    width: 100vw 
+    height: 100vh
+    position: fixed
+    overflow: hidden 
+    background: linear-gradient(#e66465, #9198e5)

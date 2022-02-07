@@ -36,7 +36,7 @@ export class ConversationComponent implements OnInit {
     this.createUsersListToMessage();
 
     this.usersList = userService.usersList;
-    this.textingWith = userService.usersList[1];
+    this.textingWith = userService.textingWith;
     this.loggedUserMessages = userService.loggedUser.usersMessages;
   }
 
@@ -81,10 +81,14 @@ export class ConversationComponent implements OnInit {
     this.testBoolean = !this.testBoolean;
   }
 
+  public sendMessage2(event: any){
+    if (event.keyCode === 13){
+      this.sendMessage();
+    }
+  }
+
   ngOnInit(): void {
   } 
-
-
 
 }
 

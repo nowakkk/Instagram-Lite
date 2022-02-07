@@ -1,21 +1,52 @@
-<div class="parentDiv">    
-    <div class="registerWindow">
-        <h1 class="fieldDescription">Welcome on my platform ! </h1>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Username</mat-label>
-            <textarea #newUserUsername matInput placeholder="Enter how you would like to be seen for other users"></textarea>
+<mat-stepper [linear]="true" #stepper class="wholeRegister">
+    <mat-step>
+      <form class="dataBlock">
+        <ng-template matStepLabel>Fill out your data</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>username</mat-label>
+          <input matInput placeholder="This is how other users will seen you as" #newUserUsername>
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Login</mat-label>
-            <textarea #newUserLogin matInput placeholder="single word form required ! "></textarea>
+        <mat-form-field appearance="fill">
+          <mat-label>login</mat-label>
+          <input matInput placeholder="Login cannot contain white characters and must be unique !" #newUserLogin>
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Password</mat-label>
-            <textarea #newUserPassword matInput placeholder="*************"></textarea>
+        <mat-form-field appearance="fill">
+          <mat-label>password</mat-label>
+          <input matInput placeholder="***********" #newUserPassword>
         </mat-form-field>
+        <div>
+          <button class="loginButton" mat-raised-button color="warn" (click)="backToLogin()">Log In</button>          
+          <button class="nextButton" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form class="dataBlock2">
+          <mat-form-field appearance="fill" >
+            <mat-label>Tell something about you</mat-label>
+            <textarea matInput class="descriptionField" #newUserDescription></textarea>
+          </mat-form-field>
+          <div class="drop-zone">            
+            <input type="file" name="inpFile" id="inpFile" #newUserPhoto class="input">
+            <div class="image-preview" id="imagePreview">
+              <img src="" alt="Image Preview" class="image-preview__image">
+              <span class="image-preview__default-text">Image Preview</span>
+            </div>
+          </div>
 
-        <button mat-raised-button color="accent" class="registerButton" (click)="addNewUser(newUserUsername.value, newUserLogin.value, newUserPassword.value)">Take me in ! <mat-icon>arrow_forward_ios</mat-icon>    </button>
-        <button mat-raised-button color="accent" class="goBackButton" (click)="backToLogin()"><mat-icon>arrow_back_ios</mat-icon>Back </button>
+      </form>        
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="nextButton">Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button class="nextButton" mat-raised-button color="accent" (click)="addNewUser(newUserUsername.value, newUserLogin.value, newUserPassword.value, newUserDescription.value)">Take me in! </button>      
+      </div>
+    </mat-step>
 
-    </div>
-</div>
+</mat-stepper>

@@ -2,21 +2,57 @@
     width: 40%
     overflow: hidden
     display: flex
+    flex-direction: column
     vertical-align: center
+    background: #F7F8F8  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8)  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #ACBB78, #F7F8F8) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 .class
     border-style: double
 
 .post
     width: 100%
-    margin: auto
     vertical-align: center
-    border: solid
-    border-width: 0.1em
+    // border: solid
+    // border-width: 0.1em
+    padding: 0px
+    padding-bottom: 20px
+
+.postAuthor
+    cursor: pointer
+    padding-left: 20px
+    padding-top: 15px
+    padding-bottom: 10px
+
+.author
+    padding-left: 10px
+    padding-top: 20px
+    font-size: 20px
+    text-align: center
+    height: 20px
+
+.postDescription
+    overflow-wrap: break-word
+
+.underPostStuff
+    padding: 20px
+    padding-top: 5px
+
+.underPostIcons
+    display: flex
+    flex-direction: row
+
+.iconsSpacer
+    width: 20px
+
 
 .postAuthorPhoto
-    max-height: 20px
+    max-height: 30px
     max-width: auto
+    border-radius: 10px
+    vertical-align: middle
 
 .addCommentButton
     height: 40px
@@ -32,6 +68,7 @@
 
 .comment
     line-height: 10px
+    
 
 .image
     width: 100%
@@ -41,6 +78,10 @@
 
 .hide-showComments
     cursor: pointer
+
+.postSpacer
+    height: 40px
+    background-color: #d8e0b9
 
 
 

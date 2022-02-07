@@ -1,0 +1,24 @@
+<div class="wholeDialog">
+    <div class="postImage">
+        <img class="postPhoto" [src]="observedPost.image">
+    </div>
+    <div class="sideSection">
+        <div class="authorsPart">
+            <div class="authorsDataField">
+                <img class="authorsPhoto" [src]="observedPost.author.photo">
+                <p class="postAuthorName"> {{observedPost.author.name}} </p>
+                <mat-divider></mat-divider>
+            </div>
+            <p class="postDescription"> {{observedPost.description}} </p>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-divider></mat-divider>
+        </div>
+        <div class="commentsPart">
+            <div class="singleCommentField" *ngFor="let comment of observedPost.comments">
+                <b style="cursor: pointer" (click)="goToUserProfile(comment.author)">{{comment.author.name}} : </b>{{comment.commentContent}}
+            </div>
+        </div>
+    </div>
+
+</div>

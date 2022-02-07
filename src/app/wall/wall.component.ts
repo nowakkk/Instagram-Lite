@@ -4,6 +4,7 @@ import { PostComponent } from '../post/post.component';
 import { UserService } from '../user.service';
 import { UserComponent } from '../user/user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wall',
@@ -15,23 +16,42 @@ export class WallComponent implements OnInit {
   publishedPosts: PostComponent[] = [];
   tempComment: string = "";
   description: string = "Show";
+  displayedIcon: string = "favorite";
 
   observedUser: UserComponent;
 
-  constructor(private postService: PostService, private userService: UserService, private snackBar: MatSnackBar) {
+  constructor(private postService: PostService, private userService: UserService, private snackBar: MatSnackBar, private router: Router) {
     this.publishedPosts = postService.postsList;
     this.observedUser = userService.observedUser;
 
     this.alignPostsDisplay();
    }
 
-  public addLike(postID: number){
-    this.postService.addLike(postID);
+  public addLike(post: PostComponent){
+    this.postService.addLike(post.id);
+  }
+
+  public isPostLikedByLoggedUser(checkPost: PostComponent){
+    if (this.userService.loggedUser.usersLikedPosts.indexOf(checkPost) !== -1){
+      return "favorite";
+    }
+    else
+      return "favorite_border";
   }
 
   public alignPostsDisplay(){
     for (let post of this.postService.postsList){
       post.showComments = false;
+    }
+  }
+
+  public messagePostAuthor(post: PostComponent){
+    if (post.author == this.userService.loggedUser){
+      this.snackBar.open("You cannot message yourself ! ", "OK");
+    }
+    else {
+      this.userService.textingWith = post.author;
+      this.router.navigate(['/conversations']);
     }
   }
 
@@ -42,6 +62,12 @@ export class WallComponent implements OnInit {
     }
     else {
       this.snackBar.open("The comment can't be empty!", "OK");
+    }
+  }
+
+  public addComment2(event: any, postID: number){
+    if (event.keyCode === 13){
+      this.addComment(postID);
     }
   }
 

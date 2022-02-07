@@ -1,3 +1,4 @@
+<div class="wholeWindow">
 <app-toolbar></app-toolbar>
 <div class="spacer"></div>
 <div class="conversationsWindow">
@@ -8,21 +9,20 @@
                {{ loggedUser.name }}
             </div>
             <div class="userConversationField" *ngFor="let conv of usersListToMessage" (click)="setNewTextingWithUser(conv)"> 
-                <div class="viewSpacer"></div>
-                {{conv.name}} 
+                <img class="conversationImage" [src] = "conv.photo">
+                <p>{{conv.name}}</p> 
             </div>
 
         </div>
         <div class="activeConversation">
             <div class="conversationCorrespondent" >
-                name of user you write with
-                <br>
-                {{textingWith.name}}
+                <img class="textingWithImage" [src] = "textingWith.photo">
+                <p class="whoWeTextWith"> {{textingWith.name}} </p>
             </div>
             
             <div class="existingConversation">
                 <div *ngFor="let message of thisConversationMessages" [ngClass]="message.author == loggedUser ? 'singleMessageFromAuthor' : 'singleMessage' " >
-                    {{message.author.name}} : {{message.content}}
+                    {{message.content}}
                     <br>
                 </div>
                 <!-- <div class="stylingConvSpacer"></div> -->
@@ -31,10 +31,10 @@
             <br>
 
             <div class="newMessage">
-                <textarea id="field" placeholder="Type Here" class="message" [(ngModel)]="newMessage"></textarea>
+                <textarea id="field" placeholder="Type Here" class="message" [(ngModel)]="newMessage" (keyup)="sendMessage2($event)"></textarea>
                 <mat-icon class="sendIcon" (click)="sendMessage()">send</mat-icon>
             </div>
-
         </div>
     </div>
+</div>
 </div>

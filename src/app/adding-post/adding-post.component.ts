@@ -4,6 +4,7 @@ import { PostComponent } from '../post/post.component';
 import { UserService } from '../user.service';
 import { UserComponent } from '../user/user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-adding-post',
@@ -32,7 +33,8 @@ export class AddingPostComponent implements OnInit {
     {id: 7, isSelected: false},
   ];
 
-  constructor(private userService: UserService, private postService: PostService, private snackBar: MatSnackBar) {
+  constructor(private userService: UserService, private postService: PostService, private snackBar: MatSnackBar,
+              private dialogRef: MatDialogRef<AddingPostComponent>){
     this.newPostAuthor = userService.loggedUser;
    }
 
@@ -45,6 +47,7 @@ export class AddingPostComponent implements OnInit {
       let index = this.userService.usersList.indexOf(this.newPostAuthor);
       console.log("post add to user : " + index);
       this.userService.usersList[index].usersPosts.unshift(new PostComponent(this.description, this.image, this.newPostAuthor, this.nextId));
+      this.dialogRef.close();
     }
     else {
       this.snackBar.open("You can't publish the post without choosing any image !", "OK");

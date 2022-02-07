@@ -4,31 +4,41 @@
             <img class="postAuthorPhoto" src = "{{post.author.photo}}">
             <mat-label class="author" > {{post.author.name}} </mat-label>
         </div>
-        <br>
         <img class="image" [src]= "post.image">
         <br>
-        <mat-icon class="clickHeart" (click)="addLike(post.id)">favorite</mat-icon>
-        {{post.likes}}
-        <br>
-        Title : {{post.description}}
-        <br>
-        Comments : {{post.comments.length}} <i class="hide-showComments" (click)="showComments(post.id)"> {{description}} comments</i>
-        <br>
-        <mat-divider></mat-divider>
-        <br>
-        <div *ngIf="post.showComments">
-            <p class="comment" *ngFor="let comment of post.comments"> {{comment.author.name}} : {{comment.commentContent}} </p>
-        </div>
-        <div class="addCommentFields">
-            <mat-form-field appearance="outline">
-        
-                <mat-icon (click)="addEmotikon()" matSuffix>sentiment_very_satisfied</mat-icon>
+        <div class="underPostStuff">
+            <div class="underPostIcons">
+                <mat-icon class="clickHeart" (click)="addLike(post)">{{isPostLikedByLoggedUser(post)}}</mat-icon>
+                <div class="iconsSpacer"></div>
+                <mat-icon class="clickHeart" (click)="messagePostAuthor(post)"> chat_bubble_outline</mat-icon>
+            </div>
+            <br>
+            Likes : {{post.likes}}
+            <br>
+            <div class="postDescription"> Title : {{post.description}} </div>
+
+            Comments : {{post.comments.length}} <i class="hide-showComments" (click)="showComments(post.id)"> {{description}} comments</i>
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+            <div *ngIf="post.showComments">
+                <p class="comment" *ngFor="let comment of post.comments" >
+                     <b style="cursor: pointer" (click)="goToUserProfile(comment.author.id)">{{comment.author.name}} :</b> 
+                    {{comment.commentContent}} 
+                </p>
+            </div>
+            <div class="addCommentFields">
+                <mat-form-field appearance="outline">
             
-                <mat-label>Add comment</mat-label>
+                    <mat-icon (click)="addEmotikon()" matSuffix>sentiment_very_satisfied</mat-icon>
                 
-                <input [(ngModel)]="tempComment" matInput placeholder="Add coment">
-            </mat-form-field>
-            <button (click)="addComment(post.id)" mat-stroked-button color="primary" class="addCommentButton">Add</button>
+                    <mat-label>Add comment</mat-label>
+                    
+                    <input [(ngModel)]="tempComment" matInput placeholder="Add coment" (keyup)="addComment2($event, post.id)">
+                </mat-form-field>
+                <button (click)="addComment(post.id)" mat-stroked-button color="primary" class="addCommentButton">Add</button>
+            </div>
         </div>
-    </mat-card>    
+    </mat-card> 
+    <div class="postSpacer"></div>   
 </div>
