@@ -1,5 +1,7 @@
 # InstagramLite
 
+You can log in as one of the default user, password is "123" for each, and the login is from "123" to "12345678". 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
 
 ## Development server
